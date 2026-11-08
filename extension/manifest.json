@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Deadbolt",
+  "description": "Enforces the websites and exceptions set in the Deadbolt app.",
+  "version": "1.0.0",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArf3sEbBP/b+YvcDj/PIQFs1wr6OTv6OLr/pp6BxTT2ZiObWMP1ewwms8p7pGAHdQb11LtUpjYESSkz+LXFc9yCLRR2rv/VIdOyfb++E4eavTUwJ0Oqn4/wMki2havK4xU64Ey+QE7Izeuc/Sht55PyfgRdN3zAX2x71iWYFTQRZgOQN2IIn4agBZXhHRMyiUQoyNDERDZrkDOJLx2cITxu2asJisCnr/BZVn5PrhYvytCPkOyStV+B6eFzKEcc/6frq+NQWQy5hIwnmPpvCFEKr7RUzWpY6h/y70819/f36mfqcy2HpGT5dnTK5mscNsJaS9Qy+n3BFJ4YpBxcDmWQIDAQAB",
+  "permissions": ["nativeMessaging", "tabs", "webNavigation", "scripting", "storage", "alarms"],
+  "host_permissions": ["<all_urls>"],
+  "incognito": "spanning",
+  "background": { "service_worker": "sw.js", "scripts": ["matcher.js", "sw.js"] },
+  "action": { "default_popup": "popup.html", "default_title": "Deadbolt" },
+  "content_scripts": [
+    { "matches": ["http://*/*", "https://*/*"], "js": ["content.js"], "run_at": "document_end" }
+  ],
+  "web_accessible_resources": [],
+  "browser_specific_settings": { "gecko": { "id": "blocker@deadbolt.local", "strict_min_version": "115.0" } }
+}

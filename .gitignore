@@ -1,0 +1,4 @@
+.build/
+dist/
+excalidraw.log
+logs/
